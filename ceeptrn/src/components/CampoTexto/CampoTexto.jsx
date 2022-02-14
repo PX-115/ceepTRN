@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./estilo.css";
 
 class CampoTexto extends Component {
+  // As propriedades associadas são recebidas aqui no construtor
   constructor(props) {
     super(props);
     this.titulo = "";
@@ -11,6 +12,8 @@ class CampoTexto extends Component {
   }
 
   _handleTitulo(evento) {
+    // Verifica que há um evento (digitação do título) ...
+    // ... e alveja este valor para que seja armazenado na variável título
     evento.stopPropagation();
     this.titulo = evento.target.value;
   }
@@ -30,9 +33,21 @@ class CampoTexto extends Component {
     this.remetente = evento.target.value;
   }
 
+  _enviarCarta(evento) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    //Chamando a propriedade criada em App.js, a função enviarCarta
+    this.props.enviarCarta(
+      this.titulo,
+      this.destinatario,
+      this.texto,
+      this.remetente
+    );
+  }
+
   render() {
     return (
-      <div className="campo-texto">
+      <form className="campo-texto" onSubmit={this._enviarCarta.bind(this)}>
         <input
           type="text"
           placeholder="Título"
@@ -61,7 +76,7 @@ class CampoTexto extends Component {
         <button className="campo-texto_submit campo-texto_submit=active">
           Enviar carta
         </button>
-      </div>
+      </form>
     );
   }
 }

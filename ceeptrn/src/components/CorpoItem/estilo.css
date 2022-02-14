@@ -21,7 +21,17 @@
   font-size: 1em;
 }
 
+.corpo-item_rodape {
+  margin-top: 8px;
+  font-size: 0.8em;
+}
+
 .corpo-item_titulo {
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin-right: 12px;
+}
+
+.corpo-item_subtitulo {
+  font-size: 1.0em;
+  margin-top: 3px;
 }
