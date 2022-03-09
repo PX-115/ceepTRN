@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./assets/App.css";
 import "./assets/index.css";
 import CampoTexto from "./components/CampoTexto";
+import ListaCategorias from "./components/ListaCategorias/ListaCategorias";
 import ListaItens from "./components/ListaItens";
 import ArrayDeCartas from "./dados/Cartas";
 import ArrayDeCategorias from "./dados/Categoria";
@@ -18,13 +19,19 @@ class App extends Component {
     return (
       <section className="conteudo">
         <CampoTexto
-          enviarCarta={
-            this.enviarCarta.bind(
-              this
-            ) /* Injeção de dependência / Associando a propriedade enviarCarta criada aqui a função de enviar uma carta no CampoTexto*/
-          }
+          categorias={this.categorias}
+          enviarCarta={this.cartas.enviarCarta.bind(this.cartas)}/* Injeção de dependência / Associando a propriedade enviarCarta criada aqui a função de enviar uma carta no CampoTexto*/
         />
-        <ListaItens cartas={this.state.cartas} />
+        <main className="conteudo-principal">
+          <ListaCategorias
+            categorias={this.categorias}
+            addCategoria={this.categorias.addCategoria.bind(this.categorias)}
+          />
+          <ListaItens
+            deletar={this.cartas.deletar.bind(this.cartas)}
+            cartas={this.cartas}
+          />
+        </main>
       </section>
     );
   }
