@@ -14,7 +14,7 @@ export default class ArrayDeCategorias {
   }
 
   desinscrever(func) {
-    this._inscritos = this._inscritos.filter((f) => f != func);
+    this._inscritos = this._inscritos.filter((f) => f !== func);
   }
 
   notificar() {

@@ -25,11 +25,11 @@ class App extends Component {
         <main className="conteudo-principal">
           <ListaCategorias
             categorias={this.categorias}
-            addCategoria={this.categorias.addCategoria.bind(this.categorias)}
+            addCategoria={this.categorias.addCategoria.bind(this.categorias)} /* este tipo de bind referencia o objeto dentro da classe */
           />
           <ListaItens
-            deletar={this.cartas.deletar.bind(this.cartas)}
             cartas={this.cartas}
+            deletarCarta={this.cartas.deletarCarta.bind(this.cartas)}
           />
         </main>
       </section>

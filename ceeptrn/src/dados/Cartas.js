@@ -4,14 +4,14 @@ export default class ArrayDeCartas {
     this._inscritos = [];
   }
 
-  enviarCarta(titulo, destinatario, texto, remetente) {
-    const novaCarta = new Cartas(titulo, destinatario, texto, remetente);
+  enviarCarta(titulo, destinatario, texto, remetente, categoria) {
+    const novaCarta = new Cartas(titulo, destinatario, texto, remetente, categoria);
     this.cartas.push(novaCarta);
     this.notificar();
   }
 
-  deletar(indice) {
-    this.cartas.splice(indice, 1);
+  deletarCarta(index) {
+    this.cartas.splice(index, 1);
     this.notificar();
   }
 
@@ -20,7 +20,7 @@ export default class ArrayDeCartas {
   }
 
   desinscrever(func) {
-    this._inscritos = this._inscritos.filter((f) => f != func);
+    this._inscritos = this._inscritos.filter((f) => f !== func);
   }
 
   notificar() {

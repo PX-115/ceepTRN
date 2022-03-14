@@ -9,6 +9,27 @@ class CampoTexto extends Component {
     this.destinatario = "";
     this.texto = "";
     this.remetente = "";
+    this.categorias = "Sem categoria";
+    this.state = { categorias: [] };
+
+    this._novaCategoria = this._novaCategoria.bind(this);
+  }
+
+  _novaCategoria(categorias) {
+    this.setState({ ...this.state, categorias });
+  }
+
+  componentDidMount() {
+    this.props.categorias.inscrever(this._novaCategoria);
+  }
+
+  componentWillUnmount() {
+    this.props.categorias.desinscrever(this._novaCategoria);
+  }
+
+  _handleCategoria(evento) {
+    evento.stopPropagation();
+    this.categorias = evento.target.value;
   }
 
   _handleTitulo(evento) {
@@ -41,7 +62,8 @@ class CampoTexto extends Component {
       this.titulo,
       this.destinatario,
       this.texto,
-      this.remetente
+      this.remetente,
+      this.categorias
     );
   }
 
@@ -54,6 +76,16 @@ class CampoTexto extends Component {
           className="campo-texto_input"
           onChange={this._handleTitulo.bind(this)}
         ></input>
+        <select
+          className="campo-texto_input"
+          onChange={this._handleCategoria.bind(this)}
+        >
+          <option>Sem categoria</option>
+
+          {this.state.categorias.map((categoria, index) => {
+            return <option key={index}>{categoria}</option>;
+          })}
+        </select>
         <input
           type="text"
           placeholder="Destinatário"

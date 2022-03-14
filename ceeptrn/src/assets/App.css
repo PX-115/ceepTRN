@@ -3,7 +3,7 @@
 }
 
 .conteudo-principal {
-  flex-grow: 3;
+  flex: 3;
 }
 
 :root {

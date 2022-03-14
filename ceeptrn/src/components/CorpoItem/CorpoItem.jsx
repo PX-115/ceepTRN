@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import "./estilo.css";
 import { ReactComponent as DeleteSVG } from "../../assets/img/delete.svg";
+// importa o SVG como um componente pra q ele possa ser facilmente referenciado
+import "./estilo.css";
 
 class CorpoItem extends Component {
-  apagar() {
-    const indice = this.props.indice;
-    this.props.deletar(indice);
+  deletar() {
+    //método facilita apagar um card, não precisando escrever dentro do onClick usando os props
+    // importando props da ListaDeNotas
+    const index = this.props.index;
+    // importanto props do App.js
+    this.props.deletarCarta(index);
   }
 
   render() {
@@ -13,7 +17,8 @@ class CorpoItem extends Component {
       <section className="corpo-item">
         <header className="corpo-item_cabecalho">
           <h3 className="corpo-item_titulo">{this.props.titulo}</h3>
-          <DeleteSVG>{this.apagar.bind(this)}</DeleteSVG>
+          <DeleteSVG onClick={this.deletar.bind(this)} />
+          <h4>{this.props.categoria}</h4>
         </header>
         <header>
           <h4 className="corpo-item_subtitulo">
