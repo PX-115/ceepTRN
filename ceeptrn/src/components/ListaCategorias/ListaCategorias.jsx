@@ -37,7 +37,7 @@ class ListaCategorias extends Component {
              assim fazendo com que o map possa funcionar corretamente */
             return (
               <li className="lista-categorias_item" key={index}>
-                {categoria}
+                {/* {categoria} */}
               </li>
             );
           })}

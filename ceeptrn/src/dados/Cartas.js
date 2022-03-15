@@ -5,7 +5,13 @@ export default class ArrayDeCartas {
   }
 
   enviarCarta(titulo, destinatario, texto, remetente, categoria) {
-    const novaCarta = new Cartas(titulo, destinatario, texto, remetente, categoria);
+    const novaCarta = new Cartas(
+      titulo,
+      destinatario,
+      texto,
+      remetente,
+      categoria
+    );
     this.cartas.push(novaCarta);
     this.notificar();
   }
@@ -31,10 +37,11 @@ export default class ArrayDeCartas {
 }
 
 class Cartas {
-  constructor(titulo, destinatario, texto, remetente) {
+  constructor(titulo, destinatario, texto, remetente, categoria) {
     this.titulo = titulo;
     this.destinatario = destinatario;
     this.texto = texto;
     this.remetente = remetente;
+    this.categoria = categoria;
   }
 }

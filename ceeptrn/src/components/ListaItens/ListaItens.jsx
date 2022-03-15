@@ -40,6 +40,7 @@ class ListaItens extends Component {
                 destinatario={cartas.destinatario}
                 texto={cartas.texto}
                 remetente={cartas.remetente}
+                categoria={cartas.categoria}
               />
             </li>
           );
